@@ -35,7 +35,7 @@ class OptionKitTests: XCTestCase {
     }
     
     func testParserWithNoParameterShortOption() {
-        let optionDescription = Option(trigger:.Short("h"))
+        let optionDescription = Option(trigger:.short("h"))
         let parser = OptionParser(definitions:[optionDescription])
         
         var params = ["h"]
@@ -119,7 +119,7 @@ class OptionKitTests: XCTestCase {
     }
 
     func testInvalidCallsOfNoParameterShortOption() {
-        let optionDescription = Option(trigger:.Short("h"))
+        let optionDescription = Option(trigger:.short("h"))
         let parser = OptionParser(definitions:[optionDescription])
         
         let params = ["--hello"]
@@ -135,7 +135,7 @@ class OptionKitTests: XCTestCase {
     
 
     func testParserWithNoParameterLongOption() {
-        let optionDescription = Option(trigger:.Long("hello"))
+        let optionDescription = Option(trigger:.long("hello"))
         let parser = OptionParser(definitions:[optionDescription])
         
         var params = ["hello"]
@@ -220,7 +220,7 @@ class OptionKitTests: XCTestCase {
     }
 
     func testInvalidCallsOfNoParamterLongOption() {
-        let optionDescription = Option(trigger:.Long("vroom"), numberOfParameters:0)
+        let optionDescription = Option(trigger:.long("vroom"), numberOfParameters:0)
         let parser = OptionParser(definitions:[optionDescription])
         
         let params = ["-v"]
@@ -235,7 +235,7 @@ class OptionKitTests: XCTestCase {
     }
     
     func testParserWithNoParameterMixedOption() {
-        let optionDescription = Option(trigger:.Mixed("h", "hello"))
+        let optionDescription = Option(trigger:.mixed("h", "hello"))
         let parser = OptionParser(definitions:[optionDescription])
         
         var params = ["h"]
@@ -384,7 +384,7 @@ class OptionKitTests: XCTestCase {
 
     func testOptionWithParameters() {
         // One parameter.
-        var optionDescription = Option(trigger:.Mixed("h", "hello"), numberOfParameters:1)
+        var optionDescription = Option(trigger:.mixed("h", "hello"), numberOfParameters:1)
         var parser = OptionParser(definitions:[optionDescription])
         
         var params = ["-h", "world"]
@@ -438,7 +438,7 @@ class OptionKitTests: XCTestCase {
         }
         
         
-        optionDescription = Option(trigger:.Mixed("h", "hello"), numberOfParameters:3)
+        optionDescription = Option(trigger:.mixed("h", "hello"), numberOfParameters:3)
         parser = OptionParser(definitions:[optionDescription])
         
         params = ["-h", "world", "of", "coke"]
@@ -494,9 +494,9 @@ class OptionKitTests: XCTestCase {
     
     
     func testMixOfParametersAndNoParameters() {
-        let optionDescription = Option(trigger:.Mixed("h", "hello"), numberOfParameters:1)
-        let optionDescription2 = Option(trigger:.Mixed("p", "pom"))
-        let optionDescription3 = Option(trigger:.Mixed("n", "nom"), numberOfParameters:2)
+        let optionDescription = Option(trigger:.mixed("h", "hello"), numberOfParameters:1)
+        let optionDescription2 = Option(trigger:.mixed("p", "pom"))
+        let optionDescription3 = Option(trigger:.mixed("n", "nom"), numberOfParameters:2)
         let parser = OptionParser(definitions:[optionDescription, optionDescription2, optionDescription3])
         let expectedParameters1 = ["world"]
         let expectedParameters2 = []
